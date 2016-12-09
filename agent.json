@@ -1,0 +1,52 @@
+{
+  "versionLabel": "av, v1",
+  "agentInfo": {
+    "languageCode": "en-US",
+    "projectId": "av",
+    "voiceName": "female_1"
+  },
+  "actions": [
+    {
+      "description": "Launch intent",
+      "initialTrigger": {
+        "intent": "assistant.intent.action.MAIN"
+      },
+      "httpExecution": {
+        "url": "<INSERT YOUR EXECUTION URL HERE>"
+      }
+    },
+    {
+      "description": "av on",
+      "initialTrigger": {
+        "intent": "AV_ON",
+        "queryPatterns": [
+          {
+            "queryPattern": "tv on"
+          },
+          {
+            "queryPattern": "turn on tv"
+          }
+        ]
+      },
+      "inDialogTriggers": [
+        {
+          "intent": "PROVIDE_NUMBER",
+          "queryPatterns": [
+            {
+              "queryPattern": "how about $SchemaOrg_Number:number"
+            },
+            {
+              "queryPattern": "$SchemaOrg_Number:number"
+            },
+            {
+              "queryPattern": "is it $SchemaOrg_Number:number"
+            }
+          ]
+        }
+      ],
+      "httpExecution": {
+        "url": "<INSERT YOUR EXECUTION URL HERE>"
+      }
+    }
+  ]
+}
